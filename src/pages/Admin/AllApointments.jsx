@@ -25,7 +25,7 @@ const AllApointments = () => {
         <div className='hidden sm:grid grid-cols-[0.5fr_2fr_1fr_2fr_2fr_1fr_1fr] grid-flow-col py-3 px-6 border-b'>
           <p>#</p>
           <p>Adopter</p>
-          <p>Age</p>
+          <p>Pet Age</p>
           <p>Date & Time</p>
           <p>Pet</p>
           <p>Fees</p>
@@ -38,7 +38,7 @@ const AllApointments = () => {
             <div className='flex items-center gap-2'>
               <img className='w-8 rounded-full'src={item.userData.image} alt="" /> <p>{item.userData.name}</p>
             </div>
-            <p className='max-sm:hidden'>{calculateAge(item.userData.dob)}</p>
+            <p className='max-sm:hidden'>{item.petData?.age || 'N/A'}</p>
             <p>{slotDateFormat(item.slotDate)}, {formatSlotTime(item.slotTime)}</p>
             <div className='flex items-center gap-2'>
               <img className='w-8 rounded-full'src={item.petData.image} alt="" /> <p>{item.petData.name}</p>

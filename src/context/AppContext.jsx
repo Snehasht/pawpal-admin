@@ -7,11 +7,31 @@ const AppContextProvider = (props) => {
     const currency = 'Rs'
 
     const calculateAge = (dob) => {
-        const today = new Date()
-        const birthDate = new Date(dob)
-
-        let age = today.getFullYear() - birthDate.getFullYear()
-        return age
+        if (!dob || dob === 'Not Selected' || dob === '') {
+            return 'N/A'
+        }
+        
+        try {
+            const today = new Date()
+            const birthDate = new Date(dob)
+            
+            // Check if date is valid
+            if (isNaN(birthDate.getTime())) {
+                return 'N/A'
+            }
+            
+            let age = today.getFullYear() - birthDate.getFullYear()
+            const monthDiff = today.getMonth() - birthDate.getMonth()
+            
+            // If birthday hasn't occurred this year, subtract 1
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--
+            }
+            
+            return age
+        } catch (error) {
+            return 'N/A'
+        }
     }
 
     const months = [ "","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
