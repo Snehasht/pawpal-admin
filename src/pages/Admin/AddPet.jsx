@@ -123,7 +123,7 @@ const AddPet = () => {
             </div>
 
             <div className='flex-1 flex flex-col gap-1'>
-              <p>Adoption Fees</p>
+              <p>Appointment Fees</p>
               <input onChange={(e) => setFee(e.target.value)} value={fee} className="border rounded px-3 py-2" type="number" placeholder="Fees" required />
             </div>
           </div>
